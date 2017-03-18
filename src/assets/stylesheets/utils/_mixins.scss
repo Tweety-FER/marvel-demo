@@ -2,6 +2,7 @@
 @import 'colors';
 
 $card-height: 500px;
+$details-card-height: 400px;
 
 @mixin card() {
   min-height: $card-height;
@@ -40,6 +41,7 @@ $card-height: 500px;
 @mixin detailsCard() {
   display: flex;
 
+  height: $details-card-height;
   width: 100%;
   margin-bottom: 64px;
 
@@ -50,7 +52,7 @@ $card-height: 500px;
   border-radius: 3px;
 
   &Image {
-    max-height: 400px;
+    height: $details-card-height;
   }
 
   &Body {

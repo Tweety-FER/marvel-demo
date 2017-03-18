@@ -16,6 +16,12 @@ class CharacterDetails {
 
   @observable characters = null;
 
+  @action reset() {
+    this.name = 'Loading name...';
+    this.description = 'Loading description...';
+    this.thumbnail = null;
+  }
+
   @action load(id, keys) {
     this.isLoading = true;
     this.comics = new Comics(id);

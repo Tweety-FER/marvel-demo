@@ -25,7 +25,7 @@ export default class Comic extends Component {
 
   componentWillMount() {
     const {comicDetails, keys, params} = this.props;
-
+    comicDetails.reset();
     comicDetails.load(params.comicId, keys.activeKeys);
   }
 

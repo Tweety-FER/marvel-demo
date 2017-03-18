@@ -39,7 +39,7 @@ export class Characters {
         this.items = response.data.results.map((result) => ({
           name: result.name,
           id: result.id,
-          thumbnail: result.thumbnail,
+          thumbnail: `${result.thumbnail.path}.${result.thumbnail.extension}`,
         }));
       });
   }

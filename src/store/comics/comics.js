@@ -39,7 +39,7 @@ export class Comics {
         this.items = response.data.results.map((result) => ({
           title: result.title,
           id: result.id,
-          thumbnail: result.thumbnail,
+          thumbnail: `${result.thumbnail.path}.${result.thumbnail.extension}`,
         }));
       });
   }

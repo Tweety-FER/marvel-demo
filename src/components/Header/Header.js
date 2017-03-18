@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {Form, FormControl, FormGroup, Nav, Navbar} from 'react-bootstrap';
+import {FormControl, FormGroup, Nav, Navbar} from 'react-bootstrap';
 import {action} from 'mobx';
 import {observer} from 'mobx-react';
 
@@ -27,7 +27,7 @@ export default class Header extends Component {
           </Navbar.Brand>
         </Navbar.Header>
         <Nav pullRight>
-          <Form inline>
+          <Navbar.Form inline>
             <FormGroup controlId="pubKey">
               <FormControl
                 type="text"
@@ -44,7 +44,7 @@ export default class Header extends Component {
                 onChange={this.onChange.bind(this, 'privateKey')}
               />
             </FormGroup>
-          </Form>
+          </Navbar.Form>
         </Nav>
       </Navbar>
     );

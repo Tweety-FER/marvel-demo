@@ -8,18 +8,9 @@ export default class CharacterCard extends Component {
     onClick: PropTypes.func,
     item: PropTypes.shape({
       name: PropTypes.string.isRequired,
-      thumbnail: PropTypes.shape({
-        path: PropTypes.string.isRequired,
-        extension: PropTypes.string.isRequired,
-      }).isRequired,
+      thumbnail: PropTypes.string.isRequired,
     }).isRequired,
   };
-
-  get imageUrl() {
-    const {thumbnail} = this.props.item;
-
-    return `${thumbnail.path}.${thumbnail.extension}`;
-  }
 
   render() {
     const {onClick, item} = this.props;
@@ -32,7 +23,7 @@ export default class CharacterCard extends Component {
         <div className={styles.characterCardImageWrapper}>
           <img
             className={styles.characterCardImage} 
-            src={this.imageUrl}
+            src={item.thumbnail}
           />
         </div>
         <div className={styles.characterCardTitle}>

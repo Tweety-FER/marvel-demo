@@ -25,7 +25,7 @@ export default class Character extends Component {
 
   componentWillMount() {
     const {characterDetails, keys, params} = this.props;
-
+    characterDetails.reset();
     characterDetails.load(params.characterId, keys.activeKeys);
   }
 

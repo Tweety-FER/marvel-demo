@@ -8,10 +8,7 @@ export default class ComicCard extends Component {
     onClick: PropTypes.func,
     item: PropTypes.shape({
       title: PropTypes.string.isRequired,
-      thumbnail: PropTypes.shape({
-        path: PropTypes.string.isRequired,
-        extension: PropTypes.string.isRequired,
-      }).isRequired,
+      thumbnail: PropTypes.string.isRequired,
     }).isRequired,
   };
 
@@ -32,7 +29,7 @@ export default class ComicCard extends Component {
         <div className={styles.comicCardImageWrapper}>
           <img
             className={styles.comicCardImage} 
-            src={this.imageUrl}
+            src={item.thumbnail}
           />
         </div>
         <div className={styles.comicCardTitle}>
