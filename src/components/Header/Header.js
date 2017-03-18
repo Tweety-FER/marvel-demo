@@ -1,18 +1,23 @@
 import React, {Component, PropTypes} from 'react';
-import {Form, FormControl, FormGroup, Navbar} from 'react-bootstrap';
+import {Form, FormControl, FormGroup, Nav, Navbar} from 'react-bootstrap';
+import {action} from 'mobx';
 import {observer} from 'mobx-react';
 
 @observer
 export default class Header extends Component {
   static propTypes = {
     keys: PropTypes.shape({
-      public: PropTypes.string,
-      secret: PropTypes.string
-    }).isRequired
+      publicKey: PropTypes.string,
+      privateKey: PropTypes.string,
+    }).isRequired,
   };
 
+  @action onChange(field, event) {
+    this.props.keys[field] = event.target.value;
+  }
+
   render() {
-    const keys = this.props;
+    const {keys: {publicKey, privateKey}} = this.props;
 
     return (
       <Navbar>
@@ -23,7 +28,22 @@ export default class Header extends Component {
         </Navbar.Header>
         <Nav pullRight>
           <Form inline>
-            <FormG
+            <FormGroup controlId="pubKey">
+              <FormControl
+                type="text"
+                placeholder="Public key"
+                value={publicKey}
+                onChange={this.onChange.bind(this, 'publicKey')}
+              />
+            </FormGroup>
+            <FormGroup controlId="privKey">
+              <FormControl
+                type="text"
+                placeholder="Secret key"
+                value={privateKey}
+                onChange={this.onChange.bind(this, 'privateKey')}
+              />
+            </FormGroup>
           </Form>
         </Nav>
       </Navbar>

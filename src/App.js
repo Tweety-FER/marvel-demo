@@ -4,10 +4,14 @@ import {Provider} from 'mobx-react';
 
 import routes from './routes';
 import store from './store';
+import {Header} from './components';
 
 const App = () => (
   <Provider {...store}>
-    <Router history={browserHistory} routes={routes} />
+    <div>
+      <Header keys={store.keys} />
+      <Router history={browserHistory} routes={routes} />
+    </div>
   </Provider>
 );
 
