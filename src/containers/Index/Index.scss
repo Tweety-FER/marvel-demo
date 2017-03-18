@@ -1,5 +1,30 @@
 @import '../../assets/stylesheets/common';
 
 .index {
-  
+  padding: 120px 80px;
+
+  text-align: center;
+
+  &Title {
+    display: block;
+
+    font-size: 48px;
+    font-weight: bold;
+
+    margin-bottom: 32px;
+  }
+
+  &Buttons {
+    display: flex;
+
+    width: 100%;
+
+    justify-content: center;
+    align-items: center;
+  }
+
+  &Button {
+    min-width: 240px;
+    margin: 16px;
+  }
 }
