@@ -1,7 +1,7 @@
 import {observable, action, computed} from 'mobx';
 import {CharactersService} from '../../services';
 
-class Characters {
+export class Characters {
   charactersService = new CharactersService();
 
   @observable items = [];
@@ -12,13 +12,28 @@ class Characters {
     return this.items.length === 0;
   }
 
+  constructor(comicId) {
+    this.comicId = comicId;
+  }
+
+  _loadCharacters(keys, query) {
+    if (this.comicId) {
+      return this
+        .charactersService
+        .getCharactersForComic(this.comicId, keys, query);
+    }
+
+    return this
+      .charactersService
+      .getCharacters(keys, query);
+  }
+
   @action load(keys, query) {
     this.isLoading = true;
     this.items = [];
 
     this
-      .charactersService
-      .getCharacters(keys, query)
+      ._loadCharacters(keys, query)
       .then((response) => {
         this.isLoading = false;
         this.items = response.data.results.map((result) => ({

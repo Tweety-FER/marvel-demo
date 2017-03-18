@@ -1,3 +1,4 @@
+@import 'box-shadows';
 @import 'colors';
 
 $card-height: 500px;
@@ -10,14 +11,14 @@ $card-height: 500px;
 
   border-radius: 3px;
 
-  box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: $base-box-shadow;
 
   transition: box-shadow 300ms linear;
 
   cursor: pointer;
 
   &:hover {
-    box-shadow: 4px 8px 6px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: $hover-box-shadow;
   }
 
   &ImageWrapper {

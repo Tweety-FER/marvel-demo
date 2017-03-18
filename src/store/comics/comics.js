@@ -1,7 +1,7 @@
 import {observable, action, computed} from 'mobx';
 import {ComicsService} from '../../services';
 
-class Comics {
+export class Comics {
   comicsService = new ComicsService();
 
   @observable items = [];

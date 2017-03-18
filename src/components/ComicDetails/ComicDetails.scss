@@ -1,0 +1,37 @@
+@import '../../assets/stylesheets/common';
+
+.comic {
+  display: flex;
+
+  width: 100%;
+  margin-bottom: 64px;
+
+  background-color: $base-white;
+
+  box-shadow: $base-box-shadow;
+
+  border-radius: 3px;
+
+  &Image {
+    max-height: 400px;
+  }
+
+  &Body {
+    flex: 1;
+    padding: 16px 32px;
+  }
+
+  &Title {
+    display: block;
+
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.4;
+
+    margin-bottom: 16px;
+  }
+
+  &Description {
+    font-weight: 300;
+  }
+}

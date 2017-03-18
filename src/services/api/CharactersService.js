@@ -1,19 +1,21 @@
 import BaseApiService from './BaseApiService';
 
 export default class CharactersService extends BaseApiService {
-  getCharacters(keys, query) {
-    const queryObject = query ? {
+  _formatQuery(query) {
+    return query ? {
       nameStartsWith: query,
     } : null;
+  }
 
-    return this.fetch('characters', keys, queryObject);
+  getCharacters(keys, query) {
+    return this.fetch('characters', keys, this._formatQuery(query));
   }
 
   getCharacter(id, keys) {
     return this.fetch(`characters/${id}`, keys);
   }
 
-  getCharacterComics(id, keys, query) {
-    return this.fetch(`characters/${id}/comics`, keys, query);
+  getCharactersForComic(comicId, keys, query) {
+    return this.fetch(`comics/${comicId}/characters`, keys, this._formatQuery(query));
   }
 }
