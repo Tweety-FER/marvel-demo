@@ -1,0 +1,37 @@
+@import 'colors';
+
+$card-height: 500px;
+
+@mixin card() {
+  min-height: $card-height;
+  margin-bottom: 40px;
+
+  background-color: $base-white;
+
+  border-radius: 3px;
+
+  box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.2);
+
+  transition: box-shadow 300ms linear;
+
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 4px 8px 6px 0 rgba(0, 0, 0, 0.4);
+  }
+
+  &ImageWrapper {
+    width: 100%;
+  }
+
+  &Image {
+    width: 100%;
+  }
+
+  &Title {
+    font-weight: 700;
+    line-height: 1.5;
+
+    padding: 16px;
+  }
+}
