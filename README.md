@@ -41,3 +41,7 @@ but if you refresh you will get nothing.
 
 If this behaviour is needed, it will either need to be run in a more complex configuration,
 e.g. with node or a server rewrite config, or can be run in dev mode, described above.
+
+### Attribution
+
+<a href="http://marvel.com">Data provided by Marvel. © 2017 MARVEL</a>
