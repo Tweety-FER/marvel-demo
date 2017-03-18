@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const keys = require('./keys.json');
+
 const DEV = process.env.NODE_ENV === 'development';
 
 const config = {
@@ -48,6 +50,10 @@ const config = {
       minChunks({userRequest}) {
         return typeof userRequest === 'string' && userRequest.includes('node_modules');
       }
+    }),
+    new webpack.DefinePlugin({
+      defaultPublicKey: JSON.stringify(keys.public),
+      defaultPrivateKey: JSON.stringify(keys.private),
     }),
     new webpack.ProvidePlugin({
       fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'

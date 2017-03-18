@@ -80,12 +80,16 @@ export default class Layout extends Component {
   }
 
   componentDidMount() {
-    this.props.searchable.load();
+    this.load();
   }
 
-  @action onQueryChange(value) {
-    this.query = value;
-    this.props.searchable.load(this.query);
+  load(query) {
+    this.props.searchable.load(this.props.keys.activeKeys, query);
+  }
+
+  @action search(query) {
+    this.query = '';
+    this.load(query);
   }
 
   triggerSearch(value) {
@@ -108,7 +112,7 @@ export default class Layout extends Component {
         <Header keys={keys} />
           <Search 
             query={search.query}
-            onQueryChange={this.onQueryChange.bind(this)} 
+            search={this.search.bind(this)} 
           />
         }
         <div className={styles.containerContent}>
