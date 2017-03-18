@@ -5,3 +5,9 @@
     padding: 64px 0;
   }
 }
+
+.error {
+  color: $base-red;
+
+  text-transform: capitalize;
+}

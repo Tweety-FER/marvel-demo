@@ -3,8 +3,7 @@ import {observer, inject} from 'mobx-react';
 import {Grid, Row, Col} from 'react-bootstrap';
 import classNames from 'classnames';
 
-import {Header, Search} from '../../components'; 
-import Message from './Message/Message';
+import {Header, Message, Search} from '../../components'; 
 
 import styles from './SearchLayout.scss';
 
@@ -20,6 +19,7 @@ export default class SearchLayout extends Component {
       isEmpty: PropTypes.bool.isRequired,
       items: PropTypes.object.isRequired,
       load: PropTypes.func.isRequired,
+      error: PropTypes.string,
     }).isRequired,
     keys: PropTypes.object.isRequired,
   };
@@ -37,6 +37,15 @@ export default class SearchLayout extends Component {
     if (searchable.isLoading) {
       return (
         <Message text="Loading..." />
+      );
+    }
+
+    if (searchable.error) {
+      return (
+        <Message
+          isError
+          text={searchable.error}
+        />
       );
     }
 

@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-import {toJS} from 'mobx';
 
 import styles from './CharacterCard.scss';
 

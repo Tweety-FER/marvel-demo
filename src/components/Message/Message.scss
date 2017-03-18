@@ -1,4 +1,4 @@
-@import '../../../assets/stylesheets/common';;
+@import '../../assets/stylesheets/common';
 
 .message {
   width: 100%;
@@ -16,4 +16,8 @@
     font-size: 48px;
     font-weight: light;
   }
+}
+
+.error {
+  color: $base-red;
 }

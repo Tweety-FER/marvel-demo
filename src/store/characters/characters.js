@@ -8,6 +8,8 @@ export class Characters {
 
   @observable isLoading = false;
 
+  @observable error = ''
+
   @computed get isEmpty() {
     return this.items.length === 0;
   }
@@ -31,16 +33,20 @@ export class Characters {
   @action load(keys, query) {
     this.isLoading = true;
     this.items = [];
+    this.error = '';
 
     this
       ._loadCharacters(keys, query)
       .then((response) => {
         this.isLoading = false;
-        this.items = response.data.results.map((result) => ({
+        this.items = response.json.data.results.map((result) => ({
           name: result.name,
           id: result.id,
           thumbnail: `${result.thumbnail.path}.${result.thumbnail.extension}`,
         }));
+      }).catch((err) => {
+        this.isLoading = false;
+        this.error = err.json ? err.json.message : err.statusText;
       });
   }
 }
