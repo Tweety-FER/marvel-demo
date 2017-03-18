@@ -4,21 +4,21 @@ import {observer, inject} from 'mobx-react';
 import {Grid, Row, Col} from 'react-bootstrap';
 import classNames from 'classnames';
 
-import {Header} from '../../components'; 
-import {Message} from './Message/Message';
+import {Header, Search} from '../../components'; 
+import Message from './Message/Message';
 
 import styles from './SearchLayout.scss';
 
 @inject('keys')
 @observer
-export default class Layout extends Component {
+export default class SearchLayout extends Component {
   static propTypes = {
     children: PropTypes.node,
-    resultItem: PropTypes.node.isRequired,
+    resultItem: PropTypes.func.isRequired,
     searchable: PropTypes.shape({
       isLoading: PropTypes.bool.isRequired,
       isEmpty: PropTypes.bool.isRequired,
-      items: PropTypes.array.isRequired,
+      items: PropTypes.object.isRequired,
       load: PropTypes.func.isRequired,
     }).isRequired,
     keys: PropTypes.object.isRequired,
@@ -49,7 +49,7 @@ export default class Layout extends Component {
     }
 
     const rows = [];
-    searchable.items.forEach((item) => {
+    searchable.items.forEach((item, index) => {
       if (index % 4 === 0) {
         rows.push([]);
       }
@@ -60,17 +60,17 @@ export default class Layout extends Component {
     return (
       <Grid>
         {
-          rows.map((items) => (
-            <Row>
+          rows.map((items, index) => (
+            <Row key={index}>
               {
-                items.map((Item) => {
-                  <Col md={3}>
+                items.map((item) => (
+                  <Col md={3} key={item.id}>
                     <ResultItem
                       className={styles.searchItem}
                       item={item} 
                     />
                   </Col>
-                })
+                ))
               }  
             </Row>
           ))
@@ -103,22 +103,22 @@ export default class Layout extends Component {
     } = this.props;
 
     const containerClassName = classNames(
-      'container',
       styles.container
     );
 
     return (
       <div className={containerClassName}>
         <Header keys={keys} />
+        <main className="container">
           <Search 
-            query={search.query}
+            query={this.query}
             search={this.search.bind(this)} 
           />
-        }
-        <div className={styles.containerContent}>
-          {children}
-          {this.results}
-        </div>
+          <div className={styles.containerContent}>
+            {children || null}
+            {this.results}
+          </div>
+        </main>
       </div>
     );
   }

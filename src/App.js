@@ -8,10 +8,7 @@ import {Header} from './components';
 
 const App = () => (
   <Provider {...store}>
-    <div>
-      <Header keys={store.keys} />
-      <Router history={browserHistory} routes={routes} />
-    </div>
+    <Router history={browserHistory} routes={routes} />
   </Provider>
 );
 

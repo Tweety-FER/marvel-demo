@@ -1,6 +1,6 @@
 import md5 from 'js-md5';
 
-class BaseApiService {
+export default class BaseApiService {
   baseUrl = 'http://gateway.marvel.com/v1/public/';
 
   fetch(resourcePath, keys, searchQuery) {
@@ -11,13 +11,12 @@ class BaseApiService {
   }
 
   getQueryParams(keys, query) {
-    //nameStartsWith
     const timestamp = String(Date.now());
     const hash = md5(timestamp + keys.privateKey + keys.publicKey);
 
     const params = {
       ts: timestamp,
-      apiKey: keys.publicKey,
+      apikey: keys.publicKey,
       hash,
     };
 

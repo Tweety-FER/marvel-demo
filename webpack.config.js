@@ -40,6 +40,9 @@ const config = {
       })
     }]
   },
+  devServer: {
+    historyApiFallback: true
+  },
   plugins: [
     new ExtractTextPlugin({
       filename: '[chunkhash].css',

@@ -18,10 +18,16 @@ class Comics {
 
     this
       .comicsService
-      .getComics()
+      .getComics(keys, query)
       .then((response) => {
         this.isLoading = false;
-        this.items = response.data.results;
+        this.items = response.data.results.map((result) => ({
+          title: result.title,
+          id: result.id,
+          thumbnail: result.thumbnail,
+        }));
       });
   }
 }
+
+export default new Comics();

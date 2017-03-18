@@ -4,7 +4,7 @@ import styles from './Message.scss';
 
 export default class Message extends Component {
   static propTypes = {
-    text: PropTypes.string,
+    text: PropTypes.string.isRequired,
   };
 
   render() {

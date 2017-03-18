@@ -1,12 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 import {observable, action} from 'mobx';
 import {observer} from 'mobx-react';
-import {Form, FormControl, FormGroup} from 'react-bootstrap';
-import debounce from 'lodash.debounce';
+import {Button, Form, FormControl, FormGroup} from 'react-bootstrap';
 
 import styles from './Search.scss';
-
-const searchDebounceDuration = 300;
 
 @observer
 export default class Search extends Component {
@@ -35,6 +32,9 @@ export default class Search extends Component {
               onChange={this.onQueryChange}
             />  
           </FormGroup>
+          <Button className={styles.searchButton}>
+            Search
+          </Button>
         </Form>
       </div>
     );
