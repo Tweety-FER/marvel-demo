@@ -19,8 +19,6 @@ export default class Message extends Component {
       }
     );
 
-    console.log(messageClassName);
-
     return (
       <div className={messageClassName}>
         <div className={styles.messageText}>

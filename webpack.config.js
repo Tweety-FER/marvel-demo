@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const keys = require('./keys.json');
 
@@ -71,8 +72,12 @@ const config = {
 
 if (!DEV) {
   config.plugins.push(
-    new HtmlWebpackPlugin.optimize.UglifyJsPlugin()
-  )
+    new webpack.optimize.UglifyJsPlugin()
+  );
+
+  config.plugins.push(
+    new CleanWebpackPlugin(['build'])
+  );
 }
 
 module.exports = config;
