@@ -8,31 +8,38 @@ import styles from './Search.scss';
 @observer
 export default class Search extends Component {
   static propTypes = {
-    query: PropTypes.string.isRequired,
-    search: PropTypes.func.isRequired,
+    onSearch: PropTypes.func.isRequired,
   };
 
-  @observable query = this.props.query;
+  @observable query = '';
 
   @action onQueryChange(event) {
     this.query = event.target.value;
   }
 
+  @action onSubmit(event) {
+    event.preventDefault();
+
+    this.props.onSearch(this.query);
+    this.query = '';
+  }
+
   render() {
-    const {search} = this.props;
-    
     return (
       <div className={styles.search}>
-        <Form inline onSubmit={search}>
+        <Form inline onSubmit={this.onSubmit.bind(this)}>
           <FormGroup controlId="search">
             <FormControl
               type="search"
               placeholder="Search the Marvel Universe"
               value={this.query}
-              onChange={this.onQueryChange}
+              onChange={this.onQueryChange.bind(this)}
             />  
           </FormGroup>
-          <Button className={styles.searchButton}>
+          <Button 
+            type="submit"
+            className={styles.searchButton}
+          >
             Search
           </Button>
         </Form>

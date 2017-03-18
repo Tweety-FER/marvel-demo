@@ -10,7 +10,7 @@ export default class BaseApiService {
     return fetch(url).then((data) => data.json());
   }
 
-  getQueryParams(keys, query) {
+  getQueryParams(keys, query = {}) {
     const timestamp = String(Date.now());
     const hash = md5(timestamp + keys.privateKey + keys.publicKey);
 
@@ -18,11 +18,8 @@ export default class BaseApiService {
       ts: timestamp,
       apikey: keys.publicKey,
       hash,
+      ...query
     };
-
-    if (query) {
-      params.nameStartsWith = query;
-    }
 
     return Object.keys(params).map((key) => (
       `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`

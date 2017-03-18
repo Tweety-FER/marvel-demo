@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-import {observable, action} from 'mobx';
 import {observer, inject} from 'mobx-react';
 import {Grid, Row, Col} from 'react-bootstrap';
 import classNames from 'classnames';
@@ -27,8 +26,6 @@ export default class SearchLayout extends Component {
   defaultProps = {
     children: null,
   };
-
-  @observable query = '';
 
   get results() {
     const {
@@ -87,13 +84,8 @@ export default class SearchLayout extends Component {
     this.props.searchable.load(this.props.keys.activeKeys, query);
   }
 
-  @action search(query) {
-    this.query = '';
+  onSearch(query) {
     this.load(query);
-  }
-
-  triggerSearch(value) {
-    this.props.searchable.load(this.query);
   }
 
   render() {
@@ -110,9 +102,7 @@ export default class SearchLayout extends Component {
       <div className={containerClassName}>
         <Header keys={keys} />
         <main className="container">
-          <Search 
-            query={this.query}
-            search={this.search.bind(this)} 
+          <Search onSearch={this.onSearch.bind(this)} 
           />
           <div className={styles.containerContent}>
             {children || null}
