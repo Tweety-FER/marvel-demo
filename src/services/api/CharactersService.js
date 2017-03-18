@@ -12,7 +12,7 @@ export default class CharactersService extends BaseApiService {
   }
 
   getCharacter(id, keys) {
-    return this.fetch(`characters/${id}`, keys);
+    return this.fetch(`characters/${id}`, keys, {characterId: id});
   }
 
   getCharactersForComic(comicId, keys, query) {

@@ -15,7 +15,7 @@ export default class ComicsService extends BaseApiService {
     return this.fetch(`comics/${id}`, keys, {comicId: id});
   }
 
-  getComicsForCharacter(id, keys, query) {
-    return this.fetch(`characters/${id}/comics`, keys, this._formatQuery(query));
+  getComicsForCharacter(characterId, keys, query) {
+    return this.fetch(`characters/${characterId}/comics`, keys, this._formatQuery(query));
   }
 }

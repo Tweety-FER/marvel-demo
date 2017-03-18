@@ -12,13 +12,28 @@ export class Comics {
     return this.items.length === 0;
   }
 
+  constructor(characterId) {
+    this.characterId = characterId;
+  }
+
+  _loadComics(keys, query) {
+    if (this.characterId) {
+      return this
+        .comicsService
+        .getComicsForCharacter(this.characterId, keys, query);
+    }
+
+    return this
+      .comicsService
+      .getComics(keys, query);
+  }
+
   @action load(keys, query) {
     this.isLoading = true;
     this.items = [];
 
     this
-      .comicsService
-      .getComics(keys, query)
+      ._loadComics(keys, query)
       .then((response) => {
         this.isLoading = false;
         this.items = response.data.results.map((result) => ({
