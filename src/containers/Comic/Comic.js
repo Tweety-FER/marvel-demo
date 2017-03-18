@@ -14,7 +14,14 @@ export default class Comic extends Component {
     params: PropTypes.shape({
       comicId: PropTypes.string.isRequired,
     }).isRequired,
+    router: PropTypes.shape({
+      push: PropTypes.func.isRequired,
+    }).isRequired,
   };
+
+  onResultClick(id) {
+    this.props.router.push(`/character/${id}`);
+  }
 
   componentWillMount() {
     const {comicDetails, keys, params} = this.props;
@@ -27,6 +34,7 @@ export default class Comic extends Component {
       <SearchLayout
         searchable={this.props.comicDetails.characters}
         resultItem={CharacterCard}
+        onResultClick={this.onResultClick.bind(this)}
       >
         <ComicDetails comic={this.props.comicDetails} />
       </SearchLayout>

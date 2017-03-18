@@ -9,13 +9,21 @@ import SearchLayout from '../SearchLayout/SearchLayout';
 export default class CharactersList extends Component {
   static propTypes = {
     characters: PropTypes.object.isRequired,
+    router: PropTypes.shape({
+      push: PropTypes.func.isRequired,
+    }).isRequired,
   };
+
+  onResultClick(id) {
+    this.props.router.push(`/character/${id}`);
+  }
 
   render() {
     return (
       <SearchLayout
         searchable={this.props.characters}
         resultItem={CharacterCard}
+        onResultClick={this.onResultClick.bind(this)}
       />
     );
   }

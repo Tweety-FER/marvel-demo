@@ -14,6 +14,7 @@ export default class SearchLayout extends Component {
   static propTypes = {
     children: PropTypes.node,
     resultItem: PropTypes.func.isRequired,
+    onResultClick: PropTypes.func.isRequired,
     searchable: PropTypes.shape({
       isLoading: PropTypes.bool.isRequired,
       isEmpty: PropTypes.bool.isRequired,
@@ -64,6 +65,7 @@ export default class SearchLayout extends Component {
                   <Col md={3} key={item.id}>
                     <ResultItem
                       className={styles.searchItem}
+                      onClick={this.props.onResultClick.bind(null, item.id)}
                       item={item} 
                     />
                   </Col>
