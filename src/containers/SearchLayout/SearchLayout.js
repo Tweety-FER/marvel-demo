@@ -120,6 +120,9 @@ export default class SearchLayout extends Component {
             {this.results}
           </div>
         </main>
+        <footer className={styles.containerFooter}>
+          <a href="http://marvel.com">Data provided by Marvel. © 2017 MARVEL</a>
+        </footer>
       </div>
     );
   }

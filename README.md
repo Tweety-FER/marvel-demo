@@ -33,3 +33,11 @@ npm run build
 After that, the application will be available in the `/build` directory.
 From that point on, you can run it by navigating there in the terminal and running
 something like `http-server`, or just double-clicking on the `HTML` file.
+
+**Note**: If it is run in such a naive way and no server is set, you will not be
+able to react routes other than the base route from outside the application.
+That means that you can access some router (e.g. `/characters`) from within the application,
+but if you refresh you will get nothing.
+
+If this behaviour is needed, it will either need to be run in a more complex configuration,
+e.g. with node or a server rewrite config, or can be run in dev mode, described above.

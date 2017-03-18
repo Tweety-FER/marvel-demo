@@ -4,10 +4,12 @@
   &Content {
     padding: 64px 0;
   }
-}
 
-.error {
-  color: $base-red;
+  &Footer {
+    font-size: 14px;
 
-  text-transform: capitalize;
+    width: 100%;
+    
+    text-align: center;
+  }
 }
